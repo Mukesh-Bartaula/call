@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_call/video_call.dart';
-import 'package:video_call/voice_call.dart';
+import 'package:video_call/Screens/screens.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,41 +11,49 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Flutter Demo', home: HomePage());
+    return const MaterialApp(title: 'Flutter Demo', home: HomePage());
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text('Home Page')),
+        title: const Center(child: Text('Home Page')),
         backgroundColor: Colors.blue,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: true,
+          padding: const EdgeInsets.all(20),
           children: [
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const VideoCall()),
+                  MaterialPageRoute(
+                    builder: (context) => const AgoraHomePage(),
+                  ),
                 );
               },
-              child: const Text('Video Call '),
+              child: const Text('Agora Provider '),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const VoiceCall()),
+                  MaterialPageRoute(builder: (context) => const ZegoHomePage()),
                 );
               },
-
-              child: const Text('Voice call '),
+              child: const Text('Zego Provider '),
             ),
           ],
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:video_call/voice_call_page.dart';
+import 'package:video_call/Screens/voice_call_page.dart';
 
 class VoiceCall extends StatefulWidget {
   const VoiceCall({super.key});
